@@ -3,6 +3,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from typing import List
 from langchain.schema import Document
 from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_core.messages import HumanMessage, AIMessage
 
 # Load pdf file
 def load_pdf_files(data):
@@ -44,4 +45,11 @@ def download_embeddings():
     )
     return embeddings
  
- 
+def update_history(history, user_input, assistant_output):
+    # Add the new user message
+    history.append(HumanMessage(content=user_input))
+
+    # Add the assistant message
+    history.append(AIMessage(content=assistant_output))
+
+    return history
