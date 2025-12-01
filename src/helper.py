@@ -53,3 +53,4 @@ def update_history(history, user_input, assistant_output):
     history.append(AIMessage(content=assistant_output))
 
     return history
+    
